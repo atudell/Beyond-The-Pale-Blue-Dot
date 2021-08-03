@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}">
+	<link rel="shortcut icon" href="#">
+</head>
+<body>
+	<!--<picture>
+		<source srcset = "img\m_login.jpg" media="(max-width: 700px)">
+		<source srcset="img\login.jpg">
+		<img src="img\login.jpg">
+	</picture>-->
+	
+	<div class = "divFlexCenter">
+		<div class = "divCard" id = "divLogin">
+			<form id = "frmLogin" action = "/login" method = "post" onsubmit = "return validateLogin(this)" enctype="multipart/form-data">
+				<h2>Login</h2>
+				<input type = "text" class = "txtInput" name = "txtUsername" placeholder = "Username">
+				<br>
+				<input type = "password" class = "txtInput" name = "txtPassword" placeholder = "Password">
+				<br>
+				<input type="submit" value="Submit" id = "btnLogin">
+				{% if error != "" %}
+					<p style = "color: red;">{{ error }}</p>
+				{% endif %}
+				<p>[Cygnus gripped by Canadarm2. Image courtesy of NASA.]</p>
+			</form>
+		</div>
+	</div>	
+	<script src = "{{ url_for('static', filename = 'js/validate.js') }}"></script>
+	<script src = "{{ url_for('static', filename = 'js/login.js') }}"></script>
+</body>
+</html>

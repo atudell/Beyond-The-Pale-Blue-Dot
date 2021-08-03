@@ -1,0 +1,175 @@
+html {
+	height: 99%;
+}
+
+body {
+	height: 99%;
+}
+
+picture {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: -1;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+Input[type = "submit"] {
+	width: 95%;
+	padding:10px;
+	border:none;
+	background-color: #1e1b6e;
+	color: white;
+	font-weight:600;
+	border-radius:5px;
+	
+}
+
+.divFlexCenter {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.divMainContent {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 10%;
+}
+
+.divCard {
+	width : 30%;
+	background-color: white;
+	border-radius: 5px;
+	padding: 15px;
+}
+
+.divContentCard {
+	width : 60%;
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 5px;
+	padding: 15px;	
+	margin: 15px;
+}
+
+.txtInput {
+	width: 90%;
+	border-radius: 5px;
+	margin: 5px;
+	padding: 5px;
+	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+.btnAccount {
+	background-color: white;
+	border: none;
+	padding: 15px 32px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.btnAccountActive {
+	background-color: white;
+	padding: 15px 32px;
+	text-align: center;
+	font-size: 16px;	
+	border-style: double none double none;
+	border-width: thick;
+	border-color: #1cd7fc;
+}
+
+.error {
+	color: red;
+}
+
+#divHeader {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+}
+
+#divHeaderMenu {
+	display: flex;
+	width: 100%;
+	height: 10%;
+	background-color: #333;
+}
+
+#divHeaderMenu a {
+	display: flex;
+	align-items: center;
+	justify-content: center;	
+	color: white;
+	font-size: 15px;
+	text-align: center;
+	padding: 10px;
+	text-decoration: none;
+}
+
+#divHeaderMenu a:hover {
+	background: #ddd;
+	color: black;
+}
+
+#divUpload {
+	width: 60%;
+	margin-top: 10%
+}
+
+#divAbout {
+	width: 80%;
+	margin-top: 10%;
+}
+
+#divAccountBar {
+	display: flex;
+	margin-top: 12%;
+}
+
+#divAccountContent {
+	margin-top: 2%
+}
+
+
+
+@media only screen and (max-width: 700px) {
+	
+	.imgBanner {
+		display: none;
+	}
+	
+	.divMainContent {
+		width : 80%;
+		margin-top: 2%;
+	}
+	
+	#divHeaderMenu {
+		justify-content: center;
+	}
+	
+	#divHeaderMenu {
+		position: fixed;
+		bottom: 0;
+	}
+	
+	#divAccountBar {
+		margin-top: 5%;
+	}
+}

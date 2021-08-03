@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond the Pale Blue Dot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}">
+</head>
+<body>
+	<div id = "divHeader">
+		<img class = "imgBanner" src="{{ url_for('static', filename = 'img/banner.jpg') }}">		
+		<div id = "divHeaderMenu">
+			<a href = "/home">Home</a>
+			{% if logged_in %}
+				<a href = "/logout">Logout</a>
+			{% else %}
+				<a href = "/login">Login</a>
+			{% endif %}
+			<a href = "/upload">Upload</a>
+			<a href = "/login">About</a>
+		</div>
+	</div>
+
+	<div class = "divMainContent">
+		{% for image in query %}
+			<div class = "divContentCard">
+				<h3>{{ image.title }}</h3>
+				<center>
+					<img src = "static/uploads/{{ image.image_path }}">
+				</center>
+				<p>{{ image.caption }}</p>
+			</div>		
+		{% endfor %}
+	</div>
+	<script src = "{{ url_for('static', filename = 'js/main_feed.js') }}"></script>
+</body>
+</html>
