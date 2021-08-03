@@ -17,7 +17,6 @@ class Users(Base):
     date_created = Column(String(10), nullable=False)
 
     images = relationship("Images", backref = "Users")
-    likes = relationship("Likes", backref = "Users")
 
 class Images(Base):
 
@@ -29,19 +28,7 @@ class Images(Base):
     image_path = Column(String(50), nullable=False)
     date_created = Column(String(10), nullable=False)
     user_id = Column(Integer, ForeignKey("Users.id"))
-    
-    likes = relationship("Likes", backref = "Images")
-    
-    
-class Likes(Base):
-
-    __tablename__ = "Likes"
-    
-    id = Column(Integer, primary_key=True)
-    image_id = Column(Integer, ForeignKey("Images.id"))
-    user_id = Column(Integer, ForeignKey("Users.id"))
-    date_liked = Column(String(10), nullable=False)  
-    
+       
 
 # Connect to and create the movie table
 engine = create_engine("sqlite:///Images.db")

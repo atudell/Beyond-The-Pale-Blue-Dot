@@ -22,11 +22,11 @@
 		</div>
 	</div>
 	
-	<!--<picture>
-		<source srcset = "img\m_upload.jpg" media="(max-width: 700px)">
-		<source srcset="img\upload.jpg">
-		<img src="img\upload.jpg">
-	</picture>-->
+	<picture>
+		<source srcset = "{{ url_for('static', filename = 'img/m_upload.jpg') }}" media="(max-width: 700px)">
+		<source srcset="{{ url_for('static', filename = 'img/upload.jpg') }}">
+		<img src="{{ url_for('static', filename = 'img/upload.jpg') }}">
+	</picture>
 	
 	<div class = "divMainContent">
 		<div class = "divContentCard" id = "divUpload">

@@ -8,11 +8,11 @@
 	<link rel="shortcut icon" href="#">
 </head>
 <body>
-	<!--<picture>
-		<source srcset = "img\m_login.jpg" media="(max-width: 700px)">
-		<source srcset="img\login.jpg">
-		<img src="img\login.jpg">
-	</picture>-->
+	<picture>
+		<source srcset = "{{ url_for('static', filename = 'img/m_login.jpg') }}" media="(max-width: 700px)">
+		<source srcset="{{ url_for('static', filename = 'img/login.jpg') }}">
+		<img src="{{ url_for('static', filename = 'img/login.jpg') }}">
+	</picture>
 	
 	<div class = "divFlexCenter">
 		<div class = "divCard" id = "divLogin">
@@ -27,6 +27,7 @@
 					<p style = "color: red;">{{ error }}</p>
 				{% endif %}
 				<p>[Cygnus gripped by Canadarm2. Image courtesy of NASA.]</p>
+                <a href = "/createaccount">Create New Account Here</a>
 			</form>
 		</div>
 	</div>	

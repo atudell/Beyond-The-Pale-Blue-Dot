@@ -10,7 +10,7 @@
 	<div id = "divHeader">
 		<img class = "imgBanner" src="{{ url_for('static', filename = 'img/banner.jpg') }}">		
 		<div id = "divHeaderMenu">
-			<a href = "/home">Home</a>
+			<a href = "/">Home</a>
 			{% if logged_in %}
 				<a href = "/logout">Logout</a>
 			{% else %}

@@ -8,11 +8,11 @@
 	<link rel="shortcut icon" href="#">
 </head>
 <body>
-	<!--<picture>
-		<source srcset="img\m_create.jpg" media="(max-width: 700px)">
-		<source srcset="img\create.jpg">
-		<img src="img\create.jpg">
-	</picture>-->
+	<picture>
+		<source srcset="{{ url_for('static', filename = 'img/m_create.jpg') }}" media="(max-width: 700px)">
+		<source srcset="{{ url_for('static', filename = 'img/create.jpg') }}">
+		<img src="{{ url_for('static', filename = 'img/create.jpg') }}">
+	</picture>
 	<div class = "divFlexCenter">
 		<div class = "divCard" id = "divLogin">
 			<form action = "/createaccount" onsubmit = "return validateCreateAccount(this)" method = "post" id = "frmCreate" enctype="multipart/form-data">
