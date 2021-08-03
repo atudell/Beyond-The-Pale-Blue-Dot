@@ -4,45 +4,50 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload</title>
-    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}">
 </head>
 <body>
 	<div id = "divHeader">
-		<img class = "imgBanner" src="img\banner.jpg">		
+		<img class = "imgBanner" src="{{ url_for('static', filename = 'img/banner.jpg') }}">		
 		<div id = "divHeaderMenu">
-			<a href = "/home">Home</a>
-			<a href = "/login">Login</a>
+			<a href = "/">Home</a>
+			{% if logged_in %}
+				<a href = "/logout">Logout</a>
+			{% else %}
+				<a href = "/login">Login</a>
+			{% endif %}
 			<a href = "/upload">Upload</a>
-			<a href = "/login">About</a>
+			<a href = "/about">About</a>
 		</div>
 	</div>
 	
 	<picture>
-		<source srcset = "img\m_about.jpg" media="(max-width: 700px)">
-		<source srcset="img\about.jpg">
-		<img src="img\about.jpg">
+		<source srcset = "{{ url_for('static', filename = 'img/m_about.jpg') }}" media="(max-width: 700px)">
+		<source srcset="{{ url_for('static', filename = 'img/about.jpg') }}">
+		<img src="{{ url_for('static', filename = 'img/about.jpg') }}">
 	</picture>
 	
 	<div class = "divMainContent">
 		<div class = "divContentCard" id = "divAbout">
 			<h2>About</h2>
 			<p>
-				[Site Name] is a celebration of the nature of space. Providing only a glimpse of the majesty of the cosmos,
-				this website simultaneously showcases the wonders that lay beyond our pale, blue dot.
+				Beyond the Pale Blue Dot is a celebration of the nature of space. Providing only a glimpse of the majesty of the cosmos,
+				this website simultaneously showcases the wonders that lay beyond our pale, blue dot. Daily uploading images of distant
+                galaxies or wonders found near our own stellar backyard, the majesty of space is on full display.
 			</p>
 			<p>
-				Combining his passion for space and programming, [Site Name] was written by Andrew Udell. Using Flask as a backend
+				Combining his passion for space and programming, Beyond the Pale Blue Dot was written by Andrew Udell. Using Flask as a backend
 				and vanilla JavaScript in the frontend, this website stands a part of his portfolio. To see how it was written, 
 				take a look at the github page <a href = "">here</a>
 			</p>
 			<p>
-				To see more of Andrew's work, check out his Github profile <a href = "">here.</a>
+				To see more of Andrew's work, check out his Github profile <a href = "https://github.com/atudell">here.</a>
 			</p>
 			<p>
-				To reach out to Andrew professionally, view his LinkedIn profile <a href = "">here.</a>
+				To reach out to Andrew professionally, view his LinkedIn profile <a href = "https://www.linkedin.com/in/andrew-udell-108802140/">here.</a>
 			</p>
 			<p>
-				This site was only made possible by the photographs provided by the open source community. My sincerest thanks to [], [], and [].
+				This site was only made possible by the photographs provided by scientific community. My sincerest thanks to NASA for providing all the featured images.
 			</p>
 		</div>
 	</div>
