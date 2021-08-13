@@ -31,6 +31,6 @@ class Images(Base):
        
 
 # Connect to and create the movie table
-engine = create_engine("sqlite:///Images.db")
+engine = create_engine("mysql+pymysql://{username}:{password}@{host}/{database_name}")
 Base.metadata.create_all(engine)
 
