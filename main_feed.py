@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from jinja2 import TemplateNotFound
 from db.setup import Images
 
-engine = create_engine("sqlite:///db/Images.db")
+engine = create_engine("mysql+pymysql://{username}:{password}@{host}/{database_name}")
 
 main_feed = Blueprint("main_feed", __name__, template_folder = "templates", static_folder = "static")
 
