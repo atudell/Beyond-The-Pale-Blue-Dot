@@ -9,7 +9,7 @@ from db.setup import Users
 # This is from a separate, custom security module not uploaded to Github for security purposes
 from inputs.security import Secure
 
-engine = create_engine("sqlite:///db/Images.db")
+engine = create_engine("mysql+pymysql://{username}:{password}@{host}/{database_name}")
 
 login = Blueprint("login", __name__, template_folder = "templates", static_folder = "static")
 
