@@ -9,7 +9,7 @@ from db.setup import Images
 import imghdr
 import os
 
-engine = create_engine("sqlite:///db/Images.db")
+engine = create_engine("mysql+pymysql://{username}:{password}@{host}/{database_name}")
 
 upload = Blueprint("upload", __name__, template_folder = "templates", static_folder = "static")
 
