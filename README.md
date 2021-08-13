@@ -6,6 +6,3 @@ that lay beyond our pale, blue dot. Daily uploading images of distant galaxies o
 This website is a portfolio project for Andrew Udell. Employing Flask as a backend and vanilla JavaScript on the frontend, this shows a simple fullstack solution. 
 
 NOTE 1: The security module was intentionally left out and demo security keys are used in the Github code for security purposes
-
-Note 2: The current implementation uses an SQLite database, which is a legacy from testing. Once the site goes into production and uses a more mature solution, the Github
-page will be updated
