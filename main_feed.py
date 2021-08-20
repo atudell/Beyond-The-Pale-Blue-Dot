@@ -1,11 +1,10 @@
 from flask import Blueprint, render_template, abort, jsonify
 from flask import session as flask_session
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import NullPool
 from sqlalchemy import create_engine
 from jinja2 import TemplateNotFound
 from db.setup import Images
-
-engine = create_engine("mysql+pymysql://{username}:{password}@{host}/{database_name}")
 
 main_feed = Blueprint("main_feed", __name__, template_folder = "templates", static_folder = "static")
 
@@ -29,6 +28,11 @@ def show():
             
     try:
         
+        # Create engine by connecting to database
+	    engine = create_engine(
+            "mysql+pymysql://{username}:{password}@{host}/{database_name}",
+            poolclass = NullPool
+        )
         # A new session will have to be created in every function
         Session = sessionmaker(bind=engine)
         session = Session()
@@ -36,6 +40,7 @@ def show():
         # Run a query to get the last 5 uploaded images (as determined by ID #)
         # Increase the count by 1
         q = session.query(Images).order_by(Images.id.desc()).limit(num_images)
+        session.close()
 
         return render_template("index.html", logged_in = logged_in, query = q)
     except TemplateNotFound:
@@ -44,6 +49,11 @@ def show():
 @main_feed.route("/loadcontent/<int:count>", methods = ["GET"])
 def loadContent(count):
         
+        # Create engine by connecting to database
+	    engine = create_engine(
+            "mysql+pymysql://{username}:{password}@{host}/{database_name}",
+            poolclass = NullPool
+        )
         # A new session will have to be created in every function
         Session = sessionmaker(bind=engine)
         session = Session()
@@ -52,6 +62,7 @@ def loadContent(count):
         # values within a certain range
         # Also, increase the count by 1
         q = session.query(Images).order_by(Images.id.desc()).offset(count*num_images).limit(num_images)
+        session.close()
         
         # If the query has no results, return a JSON-ified dictionary with the single entry
         if q.count() == 0:
