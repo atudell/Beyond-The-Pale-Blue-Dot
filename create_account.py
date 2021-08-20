@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, abort, request, redirect, url_for
 from jinja2 import TemplateNotFound
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import NullPool
 from sqlalchemy import create_engine
 from inputs.validations import Input
 from db.setup import Users
@@ -8,8 +9,6 @@ from datetime import date
 
 # This is from a separate, custom security module not uploaded to Github for security purposes
 from inputs.security import Secure
-
-engine = create_engine("mysql+pymysql://{username}:{password}@{host}/{database_name}")
 
 create_account = Blueprint("create_account", __name__, template_folder = "templates", static_folder = "static")
 
@@ -87,6 +86,12 @@ def createAccount():
                 date_created = str(date.today().strftime("%Y/%m/%d"))
                 )
         
+        # Create engine by connecting to database
+        engine = create_engine(
+            "mysql+pymysql://{username}:{password}@{host}/{database_name}",
+            poolclass = NullPool
+        )
+        
         # Create a new session
         Session = sessionmaker()
         session = Session(bind = engine)
@@ -103,6 +108,7 @@ def createAccount():
             session.add(new_user)
             session.commit()
             session.close()
+            return redirect(url_for("login.show"))
         except:
             session.rollback()
             session.close()
