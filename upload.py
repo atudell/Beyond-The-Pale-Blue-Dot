@@ -2,14 +2,13 @@ from flask import Blueprint, render_template, abort, request, redirect, url_for
 from flask import session as flask_session
 from jinja2 import TemplateNotFound
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import NullPool
 from sqlalchemy import create_engine
 from datetime import date, datetime
 from inputs.validations import Input
 from db.setup import Images
 import imghdr
 import os
-
-engine = create_engine("mysql+pymysql://{username}:{password}@{host}/{database_name}")
 
 upload = Blueprint("upload", __name__, template_folder = "templates", static_folder = "static")
 
@@ -96,6 +95,13 @@ def uploadImage():
         # The file name will be the username + the date and time of upload to retain uniqueness
         file_name = str(flask_session["user_id"]) + str(datetime.now()).replace(":", "") + "." + file_type       
         file.save(os.path.join(UPLOAD_FOLDER, file_name))
+        
+    
+	    # Create engine by connecting to database
+	    engine = create_engine(
+            "mysql+pymysql://{username}:{password}@{host}/{database_name}",
+            poolclass = NullPool
+        )
         
         # A new session will have to be created in every function
         Session = sessionmaker(bind=engine)
